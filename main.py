@@ -1,6 +1,7 @@
 import string
 import random
 from random import randint
+from collections import Counter
 
 
 # Функция генерации электронных почт
@@ -52,3 +53,13 @@ for item in domains:
     domainsFile.write("%s\n" % item)
 domainsFile.close()
 print("Выделенные домены записаны в текстовый файл 'domains.txt'")
+
+# Подсчет и сохранение в текстовый файл "statistics.txt" количества встречаемости каждого домена
+statistics = Counter(domains)
+print("Подсчитано количество встречаемости каждого домена")
+statisticsFile = open('statistics.txt', 'w')
+for key, val in statistics.items():
+    statisticsFile.write('{}:{}\n'.format(key,val))
+statisticsFile.close()
+print("Статистика записана в текстовый файл 'statistics.txt'")
+
